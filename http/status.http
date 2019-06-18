@@ -1,0 +1,23 @@
+POST http://localhost:8080/jrpc
+Accept: application/json, */*
+Accept-Encoding: gzip, deflate
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "method": "status",
+  "params": {
+    "subscriptionId": "uniqueSubscriptionId"
+  },
+  "id": "243a718a-2ebb-4e32-8cc8-210c39e8a14b"
+}
+
+###
+
+
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);

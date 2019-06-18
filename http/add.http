@@ -1,0 +1,46 @@
+POST http://localhost:8080/jrpc
+Accept: application/json, */*
+Accept-Encoding: gzip, deflate
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "method": "suspend",
+  "params": {
+    "productCode": "<productVendorId>",
+    "priceCode": "<priceVendorCode>",
+    "userId": "<uniqueUserId>",
+    "subscriptionId": "<uniqueSubscriptionId>",
+    "data": {
+      "parameters":{
+        "cpunumber": 8,
+        "rammb": 16384,
+        "hddgb": 500,
+        "firewall": true
+      }
+    }
+  },
+  "id": "243a718a-2ebb-4e32-8cc8-210c39e8a14b"
+}
+
+###
+
+
+
+//
+//{
+//"jsonrpc": "2.0",
+//"result": {
+//"status": "active",
+//"data": {
+//"userShownParams": [
+//{ "name": "IP", "description": "IP-адрес сервера", "type": "ip", "value": "..."},
+//{ "name": "Password", "description": "Пароль администратора сервера", "type":
+//"password", "value": "..."},
+//{ "name": "Login", "description": "Логин администратора сервера", "type": "stri
+//ng", "value": "..."}
+//]
+//}
+//}
+//"id": "<requestId>"
+//}

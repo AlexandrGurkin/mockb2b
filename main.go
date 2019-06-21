@@ -26,12 +26,12 @@ type (
 	}
 
 	StatusHandler struct{}
-	JRPCParams  struct {
-		SubId string `json:"subscriptionId,omitempty"`
-		ProdCode string `json:"productCode,omitempty"`
-		PriceCode string `json:"priceCode,omitempty"`
-		UserId string `json:"userId,omitempty"`
-		Data interface{} `json:"data"`
+	JRPCParams    struct {
+		SubId     int         `json:"subscriptionId,omitempty"`
+		ProdCode  string      `json:"productCode,omitempty"`
+		PriceCode string      `json:"priceCode,omitempty"`
+		UserId    int         `json:"userId,omitempty"`
+		Data      interface{} `json:"data"`
 	}
 	StatusRespData struct {
 		Date string `json:"retryDate,omitempty"`
@@ -41,11 +41,11 @@ type (
 		Data   StatusRespData `json:"data,omitempty"`
 	}
 
-	ModifyHandler struct{}
-	RemindHandler struct{}
-	RemoveHandler struct{}
-	RenewHandler struct{}
-	ResumeHandler struct{}
+	ModifyHandler  struct{}
+	RemindHandler  struct{}
+	RemoveHandler  struct{}
+	RenewHandler   struct{}
+	ResumeHandler  struct{}
 	SuspendHandler struct{}
 
 	AddHandler struct{}
@@ -55,11 +55,12 @@ type (
 	AddData struct {
 		Date string `json:"retryDate"`
 	}
-	AddResult  struct {
+	AddResult struct {
 		Status string         `json:"status"`
 		Data   StatusRespData `json:"data"`
 	}
 )
+
 func (h StatusHandler) ServeJSONRPC(c context.Context, params *fastjson.RawMessage) (interface{}, *jsonrpc.Error) {
 	var p JRPCParams
 	log.Println("\n status, id - " + string(*jsonrpc.RequestID(c)) + "\n" + string(*params))
@@ -120,7 +121,7 @@ func (h RemoveHandler) ServeJSONRPC(c context.Context, params *fastjson.RawMessa
 	}
 
 	return JRPCResult{
-		Status: "active",
+		Status: "inactive",
 		Data:   StatusRespData{time.Now().Add(time.Minute).Format(time.RFC3339)},
 	}, nil
 }
@@ -159,7 +160,7 @@ func (h SuspendHandler) ServeJSONRPC(c context.Context, params *fastjson.RawMess
 	}
 
 	return JRPCResult{
-		Status: "active",
+		Status: "suspended",
 		Data:   StatusRespData{time.Now().Add(time.Minute).Format(time.RFC3339)},
 	}, nil
 }
@@ -239,3 +240,30 @@ func main() {
 		log.Fatalln(err)
 	}
 }
+
+//package main
+//
+//import (
+//	"log"
+//	"net/http"
+//	"net/http/httputil"
+//)
+//
+//// DefaultPort is the default port to use if once is not specified by the SERVER_PORT environment variable
+//
+//// EchoHandler echos back the request as a response
+//func EchoHandler(w http.ResponseWriter, r *http.Request) {
+//	requestDump, err := httputil.DumpRequest(r, true)
+//	if err != nil {
+//		log.Println(err)
+//	}
+//	log.Println(string(requestDump))
+//}
+//
+//func main() {
+//
+//	log.Println("starting server, listening on port 8080")
+//
+//	http.HandleFunc("/", EchoHandler)
+//	http.ListenAndServe(":8080" , nil)
+//}

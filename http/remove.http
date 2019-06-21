@@ -17,3 +17,6 @@
 #},
 #"id": "<requestId>"
 #}
+
+
+#{"productCode":"service_smartresident_sr001","priceCode":"sr_base_3m","userId":10429,"subscriptionId":16394,"data":{"testSubscription":true,"order":{"test":true,"comment":"order.test parameter and order object itself is DEPRECATED, use data.testSubscription for determine test status of subscription"},"parameters":{"label":"","firstName":"Иван","lastName":"Фролов","Phone":"79152936861","Email":"ivan.frolov@mts.ru","periodType":"MONTHLY","periodLength":3},"user":{"email":"ivan.frolov@mts.ru","phone":"79152936861","phone_comment":"DEPRECATED: phone property is deprecated, use loginPhone or contactPhone or configure productSaleParameters","loginPhone":"79152936861","contactPhone":"79152936861","chargePhone":"79160877247","autoRenewal":true,"firstName":"Иван","lastName":"Фролов"},"company":{"comment":"NOTICE: there are user profile parameters, for more flexibility configure productSaleParameters","name":"ПАО МТС","inn":""},"geo":{"country":{"name":"Россия"},"region":{"name":"Москва"}}}}
